@@ -1,0 +1,58 @@
+syntax = "proto3";
+option go_package="./pb";
+
+
+service UserService {
+    rpc Create(CreateUserRequest) returns (CreateUserResponse) {}
+    rpc UpdatePassword(UpdatePasswordUserRequest) returns (UpdateUserResponse) {}
+    rpc UpdateName(UpdateNameUserRequest) returns (UpdateUserResponse) {}
+    rpc UpdateEmail(UpdateEmailUserRequest) returns (UpdateUserResponse) {}
+    rpc Delete(DeleteUserRequest) returns (DeleteUserResponse) {}
+    rpc Get(GetUserRequest) returns (GetUserResponse) {}
+    rpc GetSecret(GetUserSecretRequest) returns (GetUserSecretResponse) {}
+    rpc GetStream(GetUsersRequest) returns (stream User) {}
+}
+
+message User {
+    string id = 1;
+    string name = 2;
+    string email = 4;
+    string password = 3;
+}
+
+message CreateUserRequest {
+    User user = 1;
+}
+
+message CreateUserResponse {
+    string id = 1 ;
+}
+
+message UpdatePasswordUserRequest {}
+message UpdateNameUserRequest {}
+message UpdateEmailUserRequest {}
+message GetUserSecretRequest {}
+message GetUserSecretResponse {}
+
+message UpdateUserResponse {}
+
+
+message DeleteUserRequest {
+    string id = 1;
+}
+
+message DeleteUserResponse {}
+
+
+message GetUserRequest {
+    string id = 1;
+}
+
+message GetUsersRequest {
+    string offset = 1;
+    string limit = 2;
+}
+
+message GetUserResponse {
+    User user = 1;
+}

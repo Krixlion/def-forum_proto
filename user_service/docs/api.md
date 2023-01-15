@@ -3,67 +3,53 @@
 
 ## Table of Contents
 
-- [article-service.proto](#article-service-proto)
-    - [Article](#-Article)
-    - [CreateArticleRequest](#-CreateArticleRequest)
-    - [CreateArticleResponse](#-CreateArticleResponse)
-    - [DeleteArticleRequest](#-DeleteArticleRequest)
-    - [DeleteArticleResponse](#-DeleteArticleResponse)
-    - [GetArticleRequest](#-GetArticleRequest)
-    - [GetArticleResponse](#-GetArticleResponse)
-    - [GetArticlesRequest](#-GetArticlesRequest)
-    - [UpdateArticleRequest](#-UpdateArticleRequest)
-    - [UpdateArticleResponse](#-UpdateArticleResponse)
+- [user_service.proto](#user_service-proto)
+    - [CreateUserRequest](#-CreateUserRequest)
+    - [CreateUserResponse](#-CreateUserResponse)
+    - [DeleteUserRequest](#-DeleteUserRequest)
+    - [DeleteUserResponse](#-DeleteUserResponse)
+    - [GetUserRequest](#-GetUserRequest)
+    - [GetUserResponse](#-GetUserResponse)
+    - [GetUserSecretRequest](#-GetUserSecretRequest)
+    - [GetUserSecretResponse](#-GetUserSecretResponse)
+    - [GetUsersRequest](#-GetUsersRequest)
+    - [UpdateEmailUserRequest](#-UpdateEmailUserRequest)
+    - [UpdateNameUserRequest](#-UpdateNameUserRequest)
+    - [UpdatePasswordUserRequest](#-UpdatePasswordUserRequest)
+    - [UpdateUserResponse](#-UpdateUserResponse)
+    - [User](#-User)
   
-    - [ArticleService](#-ArticleService)
+    - [UserService](#-UserService)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="article-service-proto"></a>
+<a name="user_service-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## article-service.proto
+## user_service.proto
 
 
 
-<a name="-Article"></a>
+<a name="-CreateUserRequest"></a>
 
-### Article
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| user_id | [string](#string) |  |  |
-| title | [string](#string) |  |  |
-| body | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="-CreateArticleRequest"></a>
-
-### CreateArticleRequest
+### CreateUserRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| article | [Article](#Article) |  |  |
+| user | [User](#User) |  |  |
 
 
 
 
 
 
-<a name="-CreateArticleResponse"></a>
+<a name="-CreateUserResponse"></a>
 
-### CreateArticleResponse
+### CreateUserResponse
 
 
 
@@ -76,34 +62,9 @@
 
 
 
-<a name="-DeleteArticleRequest"></a>
+<a name="-DeleteUserRequest"></a>
 
-### DeleteArticleRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="-DeleteArticleResponse"></a>
-
-### DeleteArticleResponse
-
-
-
-
-
-
-
-<a name="-GetArticleRequest"></a>
-
-### GetArticleRequest
+### DeleteUserRequest
 
 
 
@@ -116,24 +77,69 @@
 
 
 
-<a name="-GetArticleResponse"></a>
+<a name="-DeleteUserResponse"></a>
 
-### GetArticleResponse
+### DeleteUserResponse
+
+
+
+
+
+
+
+<a name="-GetUserRequest"></a>
+
+### GetUserRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| article | [Article](#Article) |  |  |
+| id | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="-GetArticlesRequest"></a>
+<a name="-GetUserResponse"></a>
 
-### GetArticlesRequest
+### GetUserResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user | [User](#User) |  |  |
+
+
+
+
+
+
+<a name="-GetUserSecretRequest"></a>
+
+### GetUserSecretRequest
+
+
+
+
+
+
+
+<a name="-GetUserSecretResponse"></a>
+
+### GetUserSecretResponse
+
+
+
+
+
+
+
+<a name="-GetUsersRequest"></a>
+
+### GetUsersRequest
 
 
 
@@ -147,25 +153,58 @@
 
 
 
-<a name="-UpdateArticleRequest"></a>
+<a name="-UpdateEmailUserRequest"></a>
 
-### UpdateArticleRequest
+### UpdateEmailUserRequest
+
+
+
+
+
+
+
+<a name="-UpdateNameUserRequest"></a>
+
+### UpdateNameUserRequest
+
+
+
+
+
+
+
+<a name="-UpdatePasswordUserRequest"></a>
+
+### UpdatePasswordUserRequest
+
+
+
+
+
+
+
+<a name="-UpdateUserResponse"></a>
+
+### UpdateUserResponse
+
+
+
+
+
+
+
+<a name="-User"></a>
+
+### User
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| article | [Article](#Article) |  |  |
-
-
-
-
-
-
-<a name="-UpdateArticleResponse"></a>
-
-### UpdateArticleResponse
-
+| id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| password | [string](#string) |  |  |
 
 
 
@@ -178,18 +217,21 @@
  
 
 
-<a name="-ArticleService"></a>
+<a name="-UserService"></a>
 
-### ArticleService
+### UserService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [.CreateArticleRequest](#CreateArticleRequest) | [.CreateArticleResponse](#CreateArticleResponse) |  |
-| Update | [.UpdateArticleRequest](#UpdateArticleRequest) | [.UpdateArticleResponse](#UpdateArticleResponse) |  |
-| Delete | [.DeleteArticleRequest](#DeleteArticleRequest) | [.DeleteArticleResponse](#DeleteArticleResponse) |  |
-| Get | [.GetArticleRequest](#GetArticleRequest) | [.GetArticleResponse](#GetArticleResponse) |  |
-| GetStream | [.GetArticlesRequest](#GetArticlesRequest) | [.Article](#Article) stream |  |
+| Create | [.CreateUserRequest](#CreateUserRequest) | [.CreateUserResponse](#CreateUserResponse) |  |
+| UpdatePassword | [.UpdatePasswordUserRequest](#UpdatePasswordUserRequest) | [.UpdateUserResponse](#UpdateUserResponse) |  |
+| UpdateName | [.UpdateNameUserRequest](#UpdateNameUserRequest) | [.UpdateUserResponse](#UpdateUserResponse) |  |
+| UpdateEmail | [.UpdateEmailUserRequest](#UpdateEmailUserRequest) | [.UpdateUserResponse](#UpdateUserResponse) |  |
+| Delete | [.DeleteUserRequest](#DeleteUserRequest) | [.DeleteUserResponse](#DeleteUserResponse) |  |
+| Get | [.GetUserRequest](#GetUserRequest) | [.GetUserResponse](#GetUserResponse) |  |
+| GetSecret | [.GetUserSecretRequest](#GetUserSecretRequest) | [.GetUserSecretResponse](#GetUserSecretResponse) |  |
+| GetStream | [.GetUsersRequest](#GetUsersRequest) | [.User](#User) stream |  |
 
  
 

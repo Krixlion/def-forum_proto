@@ -32,13 +32,13 @@ message UpdateArticleRequest {
 message UpdateArticleResponse {}
 
 message DeleteArticleRequest {
-    string article_id = 1;
+    string id = 1;
 }
 
 message DeleteArticleResponse {}
 
 message GetArticleRequest {
-    string article_id = 1;
+    string id = 1;
 }
 
 message GetArticlesRequest {
