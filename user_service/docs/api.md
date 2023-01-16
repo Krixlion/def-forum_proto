@@ -8,6 +8,7 @@
     - [CreateUserResponse](#-CreateUserResponse)
     - [DeleteUserRequest](#-DeleteUserRequest)
     - [DeleteUserResponse](#-DeleteUserResponse)
+    - [Empty](#-Empty)
     - [GetUserRequest](#-GetUserRequest)
     - [GetUserResponse](#-GetUserResponse)
     - [GetUserSecretRequest](#-GetUserSecretRequest)
@@ -87,6 +88,16 @@
 
 
 
+<a name="-Empty"></a>
+
+### Empty
+
+
+
+
+
+
+
 <a name="-GetUserRequest"></a>
 
 ### GetUserRequest
@@ -121,6 +132,12 @@
 
 ### GetUserSecretRequest
 
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| password | [string](#string) |  |  |
 
 
 
@@ -159,6 +176,12 @@
 
 
 
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+
+
 
 
 
@@ -169,6 +192,12 @@
 
 
 
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+
+
 
 
 
@@ -177,6 +206,12 @@
 
 ### UpdatePasswordUserRequest
 
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| password | [string](#string) |  |  |
 
 
 
@@ -225,8 +260,8 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Create | [.CreateUserRequest](#CreateUserRequest) | [.CreateUserResponse](#CreateUserResponse) |  |
-| UpdatePassword | [.UpdatePasswordUserRequest](#UpdatePasswordUserRequest) | [.UpdateUserResponse](#UpdateUserResponse) |  |
 | UpdateName | [.UpdateNameUserRequest](#UpdateNameUserRequest) | [.UpdateUserResponse](#UpdateUserResponse) |  |
+| UpdatePassword | [.UpdatePasswordUserRequest](#UpdatePasswordUserRequest) | [.UpdateUserResponse](#UpdateUserResponse) |  |
 | UpdateEmail | [.UpdateEmailUserRequest](#UpdateEmailUserRequest) | [.UpdateUserResponse](#UpdateUserResponse) |  |
 | Delete | [.DeleteUserRequest](#DeleteUserRequest) | [.DeleteUserResponse](#DeleteUserResponse) |  |
 | Get | [.GetUserRequest](#GetUserRequest) | [.GetUserResponse](#GetUserResponse) |  |
