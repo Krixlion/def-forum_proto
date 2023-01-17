@@ -22,7 +22,13 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: '1.19.3'
-
+      - run: |
+          go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
+          go install github.com/favadi/protoc-go-inject-tag@latest
+          go env -w GOBIN=${GOPATH}/bin
+          sudo chown -R runner:runner "$(go env GOBIN)"
+          echo "${GOBIN}" >> $GITHUB_PATH
+          
       - name: Install Protoc
         # if: steps.changed-files.outputs.any_changed == 'true'
         uses: arduino/setup-protoc@v1
@@ -31,11 +37,5 @@ jobs:
 
       - name: Generate Protobuf libraries
         # if: steps.changed-files.outputs.any_changed == 'true'
-        run: |
-          go env -w GOBIN=${GOPATH}/bin
-          sudo chown -R runner:runner "$(go env GOBIN)"
-          go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
-          go install github.com/favadi/protoc-go-inject-tag@latest
-          echo "${GOBIN}" >> $GITHUB_PATH
-          
+        run: |          
           bash ./protoc.sh
