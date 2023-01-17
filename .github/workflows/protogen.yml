@@ -31,8 +31,8 @@ jobs:
 
       - name: Generate Protobuf libraries
         # if: steps.changed-files.outputs.any_changed == 'true'
-        # go env -w $GO111MODULE=off
         run: |
+          go env -w GOBIN=${GOPATH}/bin
           go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
           go install github.com/favadi/protoc-go-inject-tag@latest
           echo "${GOBIN}" >> $GITHUB_PATH
