@@ -15,7 +15,7 @@ jobs:
         uses: tj-actions/changed-files@v35
         with:
           files: |
-            *.proto
+            **/*.proto
 
       - name: Install Go
         if: steps.changed-files.outputs.any_changed == 'true'
