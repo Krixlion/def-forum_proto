@@ -10,27 +10,27 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v35
-        with:
-          files: |
-            **/*.proto
+      # - name: Get changed files
+      #   id: changed-files
+      #   uses: tj-actions/changed-files@v35
+      #   with:
+      #     files: |
+      #       **/*.proto
 
       - name: Install Go
-        if: steps.changed-files.outputs.any_changed == 'true'
+        # if: steps.changed-files.outputs.any_changed == 'true'
         uses: actions/setup-go@v3
         with:
           go-version: '1.19.3'
 
       - name: Install Protoc
-        if: steps.changed-files.outputs.any_changed == 'true'
+        # if: steps.changed-files.outputs.any_changed == 'true'
         uses: arduino/setup-protoc@v1
         with:
-          version: '3.9.1'
+          version: '3.6.1'
 
       - name: Generate Protobuf libraries
-        if: steps.changed-files.outputs.any_changed == 'true'
+        # if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
           go install github.com/favadi/protoc-go-inject-tag@latest
