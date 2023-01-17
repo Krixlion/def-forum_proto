@@ -22,13 +22,6 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: '1.19.3'
-      - run: |
-          go env -w GOBIN=${GOPATH}/bin
-          go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
-          go install github.com/favadi/protoc-go-inject-tag@latest
-          sudo chown -R runner:runner "$(go env GOBIN)"
-          echo "${GOBIN}" >> $GITHUB_PATH
-          protoc-go-inject-tag -v
           
       - name: Install Protoc
         # if: steps.changed-files.outputs.any_changed == 'true'
@@ -39,4 +32,16 @@ jobs:
       - name: Generate Protobuf libraries
         # if: steps.changed-files.outputs.any_changed == 'true'
         run: |          
+          mkdir -p ./bin
+          go env -w GOPATH=$(pwd)
+          go env -w GOBIN=${GOPATH}/bin
+
+          sudo chown -R 777 "$(echo $GOBIN)"
+          echo "${GOBIN}" >> $GITHUB_PATH
+          
+          go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
+          go install github.com/favadi/protoc-go-inject-tag@latest
+          
+          protoc-go-inject-tag -v
+          
           bash ./protoc.sh
