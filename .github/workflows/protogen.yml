@@ -23,11 +23,12 @@ jobs:
         with:
           go-version: '1.19.3'
       - run: |
+          go env -w GOBIN=${GOPATH}/bin
           go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
           go install github.com/favadi/protoc-go-inject-tag@latest
-          go env -w GOBIN=${GOPATH}/bin
           sudo chown -R runner:runner "$(go env GOBIN)"
           echo "${GOBIN}" >> $GITHUB_PATH
+          protoc-go-inject-tag -v
           
       - name: Install Protoc
         # if: steps.changed-files.outputs.any_changed == 'true'
