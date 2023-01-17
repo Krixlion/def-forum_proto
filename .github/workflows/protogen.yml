@@ -34,4 +34,5 @@ jobs:
         run: |
           go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
           go install github.com/favadi/protoc-go-inject-tag@latest
+          run: echo "$GOPATH/bin" >> $GITHUB_PATH
           bash ./protoc.sh

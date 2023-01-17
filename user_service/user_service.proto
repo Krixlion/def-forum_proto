@@ -81,4 +81,4 @@ message GetUserResponse {
 }
 
 
-message Empty {}
+message Empty{}
