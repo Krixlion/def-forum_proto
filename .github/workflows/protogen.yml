@@ -33,10 +33,12 @@ jobs:
         # if: steps.changed-files.outputs.any_changed == 'true'
         run: |          
           mkdir -p ./bin
-          go env -w GOPATH=$(pwd)
-          go env -w GOBIN=${GOPATH}/bin
+          export GOPATH=$(pwd)
+          export GOBIN=${GOPATH}/bin
+          go env -w GOPATH=${GOPATH}
+          go env -w GOBIN=${GOBIN}
 
-          sudo chown -R 777 "$(echo $GOBIN)"
+          sudo chown -R 777 "${GOBIN}"
           echo "${GOBIN}" >> $GITHUB_PATH
           
           go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
