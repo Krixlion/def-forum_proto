@@ -16,7 +16,7 @@ jobs:
         uses: tj-actions/changed-files@v35
         with:
           files: |
-            *.proto
+            **/*.proto
 
       # Runs a single command using the runners shell
       - name: Generate Protobuf libraries
