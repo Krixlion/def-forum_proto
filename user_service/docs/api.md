@@ -230,7 +230,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Create | [.CreateUserRequest](#CreateUserRequest) | [.CreateUserResponse](#CreateUserResponse) |  |
-| UpdateEmail | [.UpdateUserRequest](#UpdateUserRequest) | [.UpdateUserResponse](#UpdateUserResponse) |  |
+| Update | [.UpdateUserRequest](#UpdateUserRequest) | [.UpdateUserResponse](#UpdateUserResponse) |  |
 | Delete | [.DeleteUserRequest](#DeleteUserRequest) | [.DeleteUserResponse](#DeleteUserResponse) |  |
 | Get | [.GetUserRequest](#GetUserRequest) | [.GetUserResponse](#GetUserResponse) |  |
 | GetSecret | [.GetUserSecretRequest](#GetUserSecretRequest) | [.GetUserSecretResponse](#GetUserSecretResponse) |  |

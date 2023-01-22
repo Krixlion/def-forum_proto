@@ -4,7 +4,7 @@ option go_package = "./pb";
 service UserService {
     rpc Create(CreateUserRequest) returns (CreateUserResponse) {}
     
-    rpc UpdateEmail(UpdateUserRequest) returns (UpdateUserResponse) {}
+    rpc Update(UpdateUserRequest) returns (UpdateUserResponse) {}
     
     rpc Delete(DeleteUserRequest) returns (DeleteUserResponse) {}
     
