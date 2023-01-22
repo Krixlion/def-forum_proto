@@ -14,9 +14,7 @@
     - [GetUserSecretRequest](#-GetUserSecretRequest)
     - [GetUserSecretResponse](#-GetUserSecretResponse)
     - [GetUsersRequest](#-GetUsersRequest)
-    - [UpdateEmailUserRequest](#-UpdateEmailUserRequest)
-    - [UpdateNameUserRequest](#-UpdateNameUserRequest)
-    - [UpdatePasswordUserRequest](#-UpdatePasswordUserRequest)
+    - [UpdateUserRequest](#-UpdateUserRequest)
     - [UpdateUserResponse](#-UpdateUserResponse)
     - [User](#-User)
   
@@ -150,6 +148,11 @@
 
 
 
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user | [User](#User) |  |  |
+
+
 
 
 
@@ -170,48 +173,15 @@
 
 
 
-<a name="-UpdateEmailUserRequest"></a>
+<a name="-UpdateUserRequest"></a>
 
-### UpdateEmailUserRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| email | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="-UpdateNameUserRequest"></a>
-
-### UpdateNameUserRequest
+### UpdateUserRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| name | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="-UpdatePasswordUserRequest"></a>
-
-### UpdatePasswordUserRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| password | [string](#string) |  |  |
+| user | [User](#User) |  |  |
 
 
 
@@ -260,9 +230,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Create | [.CreateUserRequest](#CreateUserRequest) | [.CreateUserResponse](#CreateUserResponse) |  |
-| UpdateName | [.UpdateNameUserRequest](#UpdateNameUserRequest) | [.UpdateUserResponse](#UpdateUserResponse) |  |
-| UpdatePassword | [.UpdatePasswordUserRequest](#UpdatePasswordUserRequest) | [.UpdateUserResponse](#UpdateUserResponse) |  |
-| UpdateEmail | [.UpdateEmailUserRequest](#UpdateEmailUserRequest) | [.UpdateUserResponse](#UpdateUserResponse) |  |
+| UpdateEmail | [.UpdateUserRequest](#UpdateUserRequest) | [.UpdateUserResponse](#UpdateUserResponse) |  |
 | Delete | [.DeleteUserRequest](#DeleteUserRequest) | [.DeleteUserResponse](#DeleteUserResponse) |  |
 | Get | [.GetUserRequest](#GetUserRequest) | [.GetUserResponse](#GetUserResponse) |  |
 | GetSecret | [.GetUserSecretRequest](#GetUserSecretRequest) | [.GetUserSecretResponse](#GetUserSecretResponse) |  |

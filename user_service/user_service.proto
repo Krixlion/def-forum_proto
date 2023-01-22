@@ -4,11 +4,7 @@ option go_package = "./pb";
 service UserService {
     rpc Create(CreateUserRequest) returns (CreateUserResponse) {}
     
-    rpc UpdateName(UpdateNameUserRequest) returns (UpdateUserResponse) {}
-    
-    rpc UpdatePassword(UpdatePasswordUserRequest) returns (UpdateUserResponse) {}
-    
-    rpc UpdateEmail(UpdateEmailUserRequest) returns (UpdateUserResponse) {}
+    rpc UpdateEmail(UpdateUserRequest) returns (UpdateUserResponse) {}
     
     rpc Delete(DeleteUserRequest) returns (DeleteUserResponse) {}
     
@@ -35,19 +31,8 @@ message CreateUserResponse {
 }
 
 
-message UpdateNameUserRequest {
-    string id = 1;
-    string name = 2;
-}
-
-message UpdateEmailUserRequest {
-    string id = 1;
-    string email = 2;
-}
-
-message UpdatePasswordUserRequest {
-    string id = 1;
-    string password = 3;
+message UpdateUserRequest {
+    User user = 1;
 }
 
 message UpdateUserResponse {}
@@ -65,7 +50,10 @@ message GetUserSecretRequest {
     string password = 2;
 }
 
-message GetUserSecretResponse {}
+message GetUserSecretResponse {
+    User user = 1;
+}
+
 
 message GetUserRequest {
     string id = 1;
