@@ -1,6 +1,7 @@
 syntax = "proto3";
 option go_package="./pb";
 
+import "google/protobuf/timestamp.proto";
 
 service ArticleService {
     rpc Create(CreateArticleRequest) returns (CreateArticleResponse) {}
@@ -15,6 +16,8 @@ message Article {
     string user_id = 2;
     string title = 4;
     string body = 3;
+    google.protobuf.Timestamp created_at = 5;
+    google.protobuf.Timestamp last_updated_at = 6;
 }
 
 message CreateArticleRequest {

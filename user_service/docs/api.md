@@ -210,6 +210,8 @@
 | name | [string](#string) |  |  |
 | email | [string](#string) |  |  |
 | password | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| last_updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
