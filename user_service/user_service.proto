@@ -23,7 +23,7 @@ message User {
     string email = 4;
     string password = 3;
     google.protobuf.Timestamp created_at = 5;
-    google.protobuf.Timestamp last_updated_at = 6;
+    google.protobuf.Timestamp updated_at = 6;
 }
 
 message CreateUserRequest {
