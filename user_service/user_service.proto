@@ -50,8 +50,13 @@ message DeleteUserResponse {}
 
 
 message GetUserSecretRequest {
-    string id = 1;
-    string password = 2;
+    // Access token - only auth service should be able to query this endpoint.
+    string secret = 1;
+    
+    oneof query {
+        string id = 2;
+        string email = 3;
+    }
 }
 
 message GetUserSecretResponse {

@@ -134,8 +134,9 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| secret | [string](#string) |  | Access token - only auth service should be able to query this endpoint. |
 | id | [string](#string) |  |  |
-| password | [string](#string) |  |  |
+| email | [string](#string) |  |  |
 
 
 

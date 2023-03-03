@@ -7,7 +7,7 @@ service AuthService {
     rpc SignOut(SignOutRequest) returns (Empty) {}
 
     rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
-}   
+}
 
 message SignInRequest {
     string password = 3;
