@@ -1,0 +1,34 @@
+syntax = "proto3";
+option go_package = "./pb";
+
+service AuthService {
+    rpc SignIn(SignInRequest) returns (SignInResponse) {}
+    
+    rpc SignOut(SignOutRequest) returns (Empty) {}
+
+    rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+}   
+
+message SignInRequest {
+    string email = 4;
+    string password = 3;
+}
+
+message SignInResponse {    
+    string access_token = 1;
+    string id_token = 2;
+}
+
+message SignOutRequest {
+    string id_token = 1;
+}
+
+message RefreshTokenRequest {
+    string refresh_token = 1;
+}
+
+message RefreshTokenResponse {
+    string access_token = 1;
+}
+
+message Empty {}
