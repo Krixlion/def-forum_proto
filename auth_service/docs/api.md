@@ -72,8 +72,8 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| email | [string](#string) |  |  |
 | password | [string](#string) |  |  |
+| email | [string](#string) |  |  |
 
 
 
@@ -89,7 +89,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | access_token | [string](#string) |  |  |
-| id_token | [string](#string) |  |  |
+| refresh_token | [string](#string) |  |  |
 
 
 
@@ -104,7 +104,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id_token | [string](#string) |  |  |
+| access_token | [string](#string) |  |  |
 
 
 
