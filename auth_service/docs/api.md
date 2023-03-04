@@ -5,8 +5,8 @@
 
 - [auth_service.proto](#auth_service-proto)
     - [Empty](#-Empty)
-    - [RefreshTokenRequest](#-RefreshTokenRequest)
-    - [RefreshTokenResponse](#-RefreshTokenResponse)
+    - [RefreshAccessTokenRequest](#-RefreshAccessTokenRequest)
+    - [RefreshAccessTokenResponse](#-RefreshAccessTokenResponse)
     - [SignInRequest](#-SignInRequest)
     - [SignInResponse](#-SignInResponse)
     - [SignOutRequest](#-SignOutRequest)
@@ -34,9 +34,9 @@
 
 
 
-<a name="-RefreshTokenRequest"></a>
+<a name="-RefreshAccessTokenRequest"></a>
 
-### RefreshTokenRequest
+### RefreshAccessTokenRequest
 
 
 
@@ -49,9 +49,9 @@
 
 
 
-<a name="-RefreshTokenResponse"></a>
+<a name="-RefreshAccessTokenResponse"></a>
 
-### RefreshTokenResponse
+### RefreshAccessTokenResponse
 
 
 
@@ -124,9 +124,9 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| SignIn | [.SignInRequest](#SignInRequest) | [.SignInResponse](#SignInResponse) |  |
-| SignOut | [.SignOutRequest](#SignOutRequest) | [.Empty](#Empty) |  |
-| RefreshToken | [.RefreshTokenRequest](#RefreshTokenRequest) | [.RefreshTokenResponse](#RefreshTokenResponse) |  |
+| SignIn | [.SignInRequest](#SignInRequest) | [.SignInResponse](#SignInResponse) | Upon succesful login user receives a refresh_token. When it expires or is revoked user has to login again. |
+| SignOut | [.SignOutRequest](#SignOutRequest) | [.Empty](#Empty) | SignOut revokes user&#39;s active refresh_token. |
+| RefreshAccessToken | [.RefreshAccessTokenRequest](#RefreshAccessTokenRequest) | [.RefreshAccessTokenResponse](#RefreshAccessTokenResponse) |  |
 
  
 

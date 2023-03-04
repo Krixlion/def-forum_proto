@@ -2,11 +2,14 @@ syntax = "proto3";
 option go_package = "./pb";
 
 service AuthService {
+    // Upon succesful login user receives a refresh_token.
+    // When it expires or is revoked user has to login again.
     rpc SignIn(SignInRequest) returns (SignInResponse) {}
-    
+
+    // SignOut revokes user's active refresh_token.
     rpc SignOut(SignOutRequest) returns (Empty) {}
 
-    rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+    rpc RefreshAccessToken(RefreshAccessTokenRequest) returns (RefreshAccessTokenResponse);
 }
 
 message SignInRequest {
@@ -23,11 +26,11 @@ message SignOutRequest {
     string access_token = 1;
 }
 
-message RefreshTokenRequest {
+message RefreshAccessTokenRequest {
     string refresh_token = 1;
 }
 
-message RefreshTokenResponse {
+message RefreshAccessTokenResponse {
     string access_token = 1;
 }
 

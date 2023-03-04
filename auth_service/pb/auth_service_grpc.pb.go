@@ -22,9 +22,12 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthServiceClient interface {
+	// Upon succesful login user receives a refresh_token.
+	// When it expires or is revoked user has to login again.
 	SignIn(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (*SignInResponse, error)
+	// SignOut revokes user's active refresh_token.
 	SignOut(ctx context.Context, in *SignOutRequest, opts ...grpc.CallOption) (*Empty, error)
-	RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*RefreshTokenResponse, error)
+	RefreshAccessToken(ctx context.Context, in *RefreshAccessTokenRequest, opts ...grpc.CallOption) (*RefreshAccessTokenResponse, error)
 }
 
 type authServiceClient struct {
@@ -53,9 +56,9 @@ func (c *authServiceClient) SignOut(ctx context.Context, in *SignOutRequest, opt
 	return out, nil
 }
 
-func (c *authServiceClient) RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*RefreshTokenResponse, error) {
-	out := new(RefreshTokenResponse)
-	err := c.cc.Invoke(ctx, "/AuthService/RefreshToken", in, out, opts...)
+func (c *authServiceClient) RefreshAccessToken(ctx context.Context, in *RefreshAccessTokenRequest, opts ...grpc.CallOption) (*RefreshAccessTokenResponse, error) {
+	out := new(RefreshAccessTokenResponse)
+	err := c.cc.Invoke(ctx, "/AuthService/RefreshAccessToken", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -66,9 +69,12 @@ func (c *authServiceClient) RefreshToken(ctx context.Context, in *RefreshTokenRe
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility
 type AuthServiceServer interface {
+	// Upon succesful login user receives a refresh_token.
+	// When it expires or is revoked user has to login again.
 	SignIn(context.Context, *SignInRequest) (*SignInResponse, error)
+	// SignOut revokes user's active refresh_token.
 	SignOut(context.Context, *SignOutRequest) (*Empty, error)
-	RefreshToken(context.Context, *RefreshTokenRequest) (*RefreshTokenResponse, error)
+	RefreshAccessToken(context.Context, *RefreshAccessTokenRequest) (*RefreshAccessTokenResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -82,8 +88,8 @@ func (UnimplementedAuthServiceServer) SignIn(context.Context, *SignInRequest) (*
 func (UnimplementedAuthServiceServer) SignOut(context.Context, *SignOutRequest) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignOut not implemented")
 }
-func (UnimplementedAuthServiceServer) RefreshToken(context.Context, *RefreshTokenRequest) (*RefreshTokenResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RefreshToken not implemented")
+func (UnimplementedAuthServiceServer) RefreshAccessToken(context.Context, *RefreshAccessTokenRequest) (*RefreshAccessTokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RefreshAccessToken not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 
@@ -134,20 +140,20 @@ func _AuthService_SignOut_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthService_RefreshToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RefreshTokenRequest)
+func _AuthService_RefreshAccessToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RefreshAccessTokenRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServiceServer).RefreshToken(ctx, in)
+		return srv.(AuthServiceServer).RefreshAccessToken(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/AuthService/RefreshToken",
+		FullMethod: "/AuthService/RefreshAccessToken",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).RefreshToken(ctx, req.(*RefreshTokenRequest))
+		return srv.(AuthServiceServer).RefreshAccessToken(ctx, req.(*RefreshAccessTokenRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -168,8 +174,8 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AuthService_SignOut_Handler,
 		},
 		{
-			MethodName: "RefreshToken",
-			Handler:    _AuthService_RefreshToken_Handler,
+			MethodName: "RefreshAccessToken",
+			Handler:    _AuthService_RefreshAccessToken_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
