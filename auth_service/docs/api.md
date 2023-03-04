@@ -104,7 +104,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| access_token | [string](#string) |  |  |
+| refresh_token | [string](#string) |  |  |
 
 
 

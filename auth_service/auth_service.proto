@@ -23,7 +23,7 @@ message SignInResponse {
 }
 
 message SignOutRequest {
-    string access_token = 1;
+    string refresh_token = 1;
 }
 
 message RefreshAccessTokenRequest {
