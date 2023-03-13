@@ -5,8 +5,8 @@
 
 - [auth_service.proto](#auth_service-proto)
     - [Empty](#-Empty)
-    - [RefreshAccessTokenRequest](#-RefreshAccessTokenRequest)
-    - [RefreshAccessTokenResponse](#-RefreshAccessTokenResponse)
+    - [GetAccessTokenRequest](#-GetAccessTokenRequest)
+    - [GetAccessTokenResponse](#-GetAccessTokenResponse)
     - [SignInRequest](#-SignInRequest)
     - [SignInResponse](#-SignInResponse)
     - [SignOutRequest](#-SignOutRequest)
@@ -34,9 +34,9 @@
 
 
 
-<a name="-RefreshAccessTokenRequest"></a>
+<a name="-GetAccessTokenRequest"></a>
 
-### RefreshAccessTokenRequest
+### GetAccessTokenRequest
 
 
 
@@ -49,9 +49,9 @@
 
 
 
-<a name="-RefreshAccessTokenResponse"></a>
+<a name="-GetAccessTokenResponse"></a>
 
-### RefreshAccessTokenResponse
+### GetAccessTokenResponse
 
 
 
@@ -88,7 +88,6 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| access_token | [string](#string) |  |  |
 | refresh_token | [string](#string) |  |  |
 
 
@@ -126,7 +125,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | SignIn | [.SignInRequest](#SignInRequest) | [.SignInResponse](#SignInResponse) | Upon succesful login user receives a refresh_token. When it expires or is revoked user has to login again. |
 | SignOut | [.SignOutRequest](#SignOutRequest) | [.Empty](#Empty) | SignOut revokes user&#39;s active refresh_token. |
-| RefreshAccessToken | [.RefreshAccessTokenRequest](#RefreshAccessTokenRequest) | [.RefreshAccessTokenResponse](#RefreshAccessTokenResponse) |  |
+| RefreshAccessToken | [.GetAccessTokenRequest](#GetAccessTokenRequest) | [.GetAccessTokenResponse](#GetAccessTokenResponse) |  |
 
  
 
