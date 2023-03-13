@@ -125,7 +125,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | SignIn | [.SignInRequest](#SignInRequest) | [.SignInResponse](#SignInResponse) | Upon succesful login user receives a refresh_token. When it expires or is revoked user has to login again. |
 | SignOut | [.SignOutRequest](#SignOutRequest) | [.Empty](#Empty) | SignOut revokes user&#39;s active refresh_token. |
-| RefreshAccessToken | [.GetAccessTokenRequest](#GetAccessTokenRequest) | [.GetAccessTokenResponse](#GetAccessTokenResponse) |  |
+| GetAccessToken | [.GetAccessTokenRequest](#GetAccessTokenRequest) | [.GetAccessTokenResponse](#GetAccessTokenResponse) |  |
 
  
 

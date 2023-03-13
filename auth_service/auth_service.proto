@@ -9,7 +9,7 @@ service AuthService {
     // SignOut revokes user's active refresh_token.
     rpc SignOut(SignOutRequest) returns (Empty) {}
 
-    rpc RefreshAccessToken(GetAccessTokenRequest) returns (GetAccessTokenResponse);
+    rpc GetAccessToken(GetAccessTokenRequest) returns (GetAccessTokenResponse);
 }
 
 message SignInRequest {

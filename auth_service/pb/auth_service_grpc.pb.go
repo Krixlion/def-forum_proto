@@ -27,7 +27,7 @@ type AuthServiceClient interface {
 	SignIn(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (*SignInResponse, error)
 	// SignOut revokes user's active refresh_token.
 	SignOut(ctx context.Context, in *SignOutRequest, opts ...grpc.CallOption) (*Empty, error)
-	RefreshAccessToken(ctx context.Context, in *GetAccessTokenRequest, opts ...grpc.CallOption) (*GetAccessTokenResponse, error)
+	GetAccessToken(ctx context.Context, in *GetAccessTokenRequest, opts ...grpc.CallOption) (*GetAccessTokenResponse, error)
 }
 
 type authServiceClient struct {
@@ -56,9 +56,9 @@ func (c *authServiceClient) SignOut(ctx context.Context, in *SignOutRequest, opt
 	return out, nil
 }
 
-func (c *authServiceClient) RefreshAccessToken(ctx context.Context, in *GetAccessTokenRequest, opts ...grpc.CallOption) (*GetAccessTokenResponse, error) {
+func (c *authServiceClient) GetAccessToken(ctx context.Context, in *GetAccessTokenRequest, opts ...grpc.CallOption) (*GetAccessTokenResponse, error) {
 	out := new(GetAccessTokenResponse)
-	err := c.cc.Invoke(ctx, "/AuthService/RefreshAccessToken", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/AuthService/GetAccessToken", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -74,7 +74,7 @@ type AuthServiceServer interface {
 	SignIn(context.Context, *SignInRequest) (*SignInResponse, error)
 	// SignOut revokes user's active refresh_token.
 	SignOut(context.Context, *SignOutRequest) (*Empty, error)
-	RefreshAccessToken(context.Context, *GetAccessTokenRequest) (*GetAccessTokenResponse, error)
+	GetAccessToken(context.Context, *GetAccessTokenRequest) (*GetAccessTokenResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -88,8 +88,8 @@ func (UnimplementedAuthServiceServer) SignIn(context.Context, *SignInRequest) (*
 func (UnimplementedAuthServiceServer) SignOut(context.Context, *SignOutRequest) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignOut not implemented")
 }
-func (UnimplementedAuthServiceServer) RefreshAccessToken(context.Context, *GetAccessTokenRequest) (*GetAccessTokenResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RefreshAccessToken not implemented")
+func (UnimplementedAuthServiceServer) GetAccessToken(context.Context, *GetAccessTokenRequest) (*GetAccessTokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAccessToken not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 
@@ -140,20 +140,20 @@ func _AuthService_SignOut_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthService_RefreshAccessToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AuthService_GetAccessToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAccessTokenRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServiceServer).RefreshAccessToken(ctx, in)
+		return srv.(AuthServiceServer).GetAccessToken(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/AuthService/RefreshAccessToken",
+		FullMethod: "/AuthService/GetAccessToken",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).RefreshAccessToken(ctx, req.(*GetAccessTokenRequest))
+		return srv.(AuthServiceServer).GetAccessToken(ctx, req.(*GetAccessTokenRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -174,8 +174,8 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AuthService_SignOut_Handler,
 		},
 		{
-			MethodName: "RefreshAccessToken",
-			Handler:    _AuthService_RefreshAccessToken_Handler,
+			MethodName: "GetAccessToken",
+			Handler:    _AuthService_GetAccessToken_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
