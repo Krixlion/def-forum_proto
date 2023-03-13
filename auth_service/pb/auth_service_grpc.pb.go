@@ -28,6 +28,7 @@ type AuthServiceClient interface {
 	// SignOut revokes user's active refresh_token.
 	SignOut(ctx context.Context, in *SignOutRequest, opts ...grpc.CallOption) (*Empty, error)
 	GetAccessToken(ctx context.Context, in *GetAccessTokenRequest, opts ...grpc.CallOption) (*GetAccessTokenResponse, error)
+	TranslateAccessToken(ctx context.Context, in *TranslateAccessTokenRequest, opts ...grpc.CallOption) (*TranslateAccessTokenResponse, error)
 }
 
 type authServiceClient struct {
@@ -65,6 +66,15 @@ func (c *authServiceClient) GetAccessToken(ctx context.Context, in *GetAccessTok
 	return out, nil
 }
 
+func (c *authServiceClient) TranslateAccessToken(ctx context.Context, in *TranslateAccessTokenRequest, opts ...grpc.CallOption) (*TranslateAccessTokenResponse, error) {
+	out := new(TranslateAccessTokenResponse)
+	err := c.cc.Invoke(ctx, "/AuthService/TranslateAccessToken", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility
@@ -75,6 +85,7 @@ type AuthServiceServer interface {
 	// SignOut revokes user's active refresh_token.
 	SignOut(context.Context, *SignOutRequest) (*Empty, error)
 	GetAccessToken(context.Context, *GetAccessTokenRequest) (*GetAccessTokenResponse, error)
+	TranslateAccessToken(context.Context, *TranslateAccessTokenRequest) (*TranslateAccessTokenResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -90,6 +101,9 @@ func (UnimplementedAuthServiceServer) SignOut(context.Context, *SignOutRequest) 
 }
 func (UnimplementedAuthServiceServer) GetAccessToken(context.Context, *GetAccessTokenRequest) (*GetAccessTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccessToken not implemented")
+}
+func (UnimplementedAuthServiceServer) TranslateAccessToken(context.Context, *TranslateAccessTokenRequest) (*TranslateAccessTokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TranslateAccessToken not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 
@@ -158,6 +172,24 @@ func _AuthService_GetAccessToken_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthService_TranslateAccessToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TranslateAccessTokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).TranslateAccessToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/AuthService/TranslateAccessToken",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).TranslateAccessToken(ctx, req.(*TranslateAccessTokenRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -176,6 +208,10 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAccessToken",
 			Handler:    _AuthService_GetAccessToken_Handler,
+		},
+		{
+			MethodName: "TranslateAccessToken",
+			Handler:    _AuthService_TranslateAccessToken_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -10,6 +10,8 @@
     - [SignInRequest](#-SignInRequest)
     - [SignInResponse](#-SignInResponse)
     - [SignOutRequest](#-SignOutRequest)
+    - [TranslateAccessTokenRequest](#-TranslateAccessTokenRequest)
+    - [TranslateAccessTokenResponse](#-TranslateAccessTokenResponse)
   
     - [AuthService](#-AuthService)
   
@@ -109,6 +111,36 @@
 
 
 
+
+<a name="-TranslateAccessTokenRequest"></a>
+
+### TranslateAccessTokenRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| opaque_access_token | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="-TranslateAccessTokenResponse"></a>
+
+### TranslateAccessTokenResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| access_token | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -126,6 +158,7 @@
 | SignIn | [.SignInRequest](#SignInRequest) | [.SignInResponse](#SignInResponse) | Upon succesful login user receives a refresh_token. When it expires or is revoked user has to login again. |
 | SignOut | [.SignOutRequest](#SignOutRequest) | [.Empty](#Empty) | SignOut revokes user&#39;s active refresh_token. |
 | GetAccessToken | [.GetAccessTokenRequest](#GetAccessTokenRequest) | [.GetAccessTokenResponse](#GetAccessTokenResponse) |  |
+| TranslateAccessToken | [.TranslateAccessTokenRequest](#TranslateAccessTokenRequest) | [.TranslateAccessTokenResponse](#TranslateAccessTokenResponse) |  |
 
  
 
