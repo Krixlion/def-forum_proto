@@ -7,15 +7,12 @@
     - [CreateUserRequest](#-CreateUserRequest)
     - [CreateUserResponse](#-CreateUserResponse)
     - [DeleteUserRequest](#-DeleteUserRequest)
-    - [DeleteUserResponse](#-DeleteUserResponse)
-    - [Empty](#-Empty)
     - [GetUserRequest](#-GetUserRequest)
     - [GetUserResponse](#-GetUserResponse)
     - [GetUserSecretRequest](#-GetUserSecretRequest)
     - [GetUserSecretResponse](#-GetUserSecretResponse)
     - [GetUsersRequest](#-GetUsersRequest)
     - [UpdateUserRequest](#-UpdateUserRequest)
-    - [UpdateUserResponse](#-UpdateUserResponse)
     - [User](#-User)
   
     - [UserService](#-UserService)
@@ -70,26 +67,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="-DeleteUserResponse"></a>
-
-### DeleteUserResponse
-
-
-
-
-
-
-
-<a name="-Empty"></a>
-
-### Empty
-
 
 
 
@@ -189,16 +166,6 @@
 
 
 
-<a name="-UpdateUserResponse"></a>
-
-### UpdateUserResponse
-
-
-
-
-
-
-
 <a name="-User"></a>
 
 ### User
@@ -233,8 +200,8 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Create | [.CreateUserRequest](#CreateUserRequest) | [.CreateUserResponse](#CreateUserResponse) |  |
-| Update | [.UpdateUserRequest](#UpdateUserRequest) | [.UpdateUserResponse](#UpdateUserResponse) |  |
-| Delete | [.DeleteUserRequest](#DeleteUserRequest) | [.DeleteUserResponse](#DeleteUserResponse) |  |
+| Update | [.UpdateUserRequest](#UpdateUserRequest) | [.google.protobuf.Empty](#google-protobuf-Empty) |  |
+| Delete | [.DeleteUserRequest](#DeleteUserRequest) | [.google.protobuf.Empty](#google-protobuf-Empty) |  |
 | Get | [.GetUserRequest](#GetUserRequest) | [.GetUserResponse](#GetUserResponse) |  |
 | GetSecret | [.GetUserSecretRequest](#GetUserSecretRequest) | [.GetUserSecretResponse](#GetUserSecretResponse) |  |
 | GetStream | [.GetUsersRequest](#GetUsersRequest) | [.User](#User) stream |  |

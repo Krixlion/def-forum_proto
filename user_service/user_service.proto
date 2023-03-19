@@ -2,13 +2,14 @@ syntax = "proto3";
 option go_package = "./pb";
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
 
 service UserService {
     rpc Create(CreateUserRequest) returns (CreateUserResponse) {}
     
-    rpc Update(UpdateUserRequest) returns (UpdateUserResponse) {}
+    rpc Update(UpdateUserRequest) returns (google.protobuf.Empty) {}
     
-    rpc Delete(DeleteUserRequest) returns (DeleteUserResponse) {}
+    rpc Delete(DeleteUserRequest) returns (google.protobuf.Empty) {}
     
     rpc Get(GetUserRequest) returns (GetUserResponse) {}
     
@@ -39,14 +40,10 @@ message UpdateUserRequest {
     User user = 1;
 }
 
-message UpdateUserResponse {}
-
 
 message DeleteUserRequest {
     string id = 1;
 }
-
-message DeleteUserResponse {}
 
 
 message GetUserSecretRequest {
@@ -76,6 +73,3 @@ message GetUsersRequest {
 message GetUserResponse {
     User user = 1;
 }
-
-
-message Empty {}

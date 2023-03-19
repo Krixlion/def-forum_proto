@@ -8,6 +8,7 @@ package pb
 
 import (
 	context "context"
+	empty "github.com/golang/protobuf/ptypes/empty"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -26,7 +27,7 @@ type AuthServiceClient interface {
 	// When it expires or is revoked user has to login again.
 	SignIn(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (*SignInResponse, error)
 	// SignOut revokes user's active refresh_token.
-	SignOut(ctx context.Context, in *SignOutRequest, opts ...grpc.CallOption) (*Empty, error)
+	SignOut(ctx context.Context, in *SignOutRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	GetAccessToken(ctx context.Context, in *GetAccessTokenRequest, opts ...grpc.CallOption) (*GetAccessTokenResponse, error)
 	TranslateAccessToken(ctx context.Context, in *TranslateAccessTokenRequest, opts ...grpc.CallOption) (*TranslateAccessTokenResponse, error)
 }
@@ -48,8 +49,8 @@ func (c *authServiceClient) SignIn(ctx context.Context, in *SignInRequest, opts 
 	return out, nil
 }
 
-func (c *authServiceClient) SignOut(ctx context.Context, in *SignOutRequest, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
+func (c *authServiceClient) SignOut(ctx context.Context, in *SignOutRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/AuthService/SignOut", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -83,7 +84,7 @@ type AuthServiceServer interface {
 	// When it expires or is revoked user has to login again.
 	SignIn(context.Context, *SignInRequest) (*SignInResponse, error)
 	// SignOut revokes user's active refresh_token.
-	SignOut(context.Context, *SignOutRequest) (*Empty, error)
+	SignOut(context.Context, *SignOutRequest) (*empty.Empty, error)
 	GetAccessToken(context.Context, *GetAccessTokenRequest) (*GetAccessTokenResponse, error)
 	TranslateAccessToken(context.Context, *TranslateAccessTokenRequest) (*TranslateAccessTokenResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
@@ -96,7 +97,7 @@ type UnimplementedAuthServiceServer struct {
 func (UnimplementedAuthServiceServer) SignIn(context.Context, *SignInRequest) (*SignInResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignIn not implemented")
 }
-func (UnimplementedAuthServiceServer) SignOut(context.Context, *SignOutRequest) (*Empty, error) {
+func (UnimplementedAuthServiceServer) SignOut(context.Context, *SignOutRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignOut not implemented")
 }
 func (UnimplementedAuthServiceServer) GetAccessToken(context.Context, *GetAccessTokenRequest) (*GetAccessTokenResponse, error) {

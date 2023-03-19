@@ -4,7 +4,6 @@
 ## Table of Contents
 
 - [auth_service.proto](#auth_service-proto)
-    - [Empty](#-Empty)
     - [GetAccessTokenRequest](#-GetAccessTokenRequest)
     - [GetAccessTokenResponse](#-GetAccessTokenResponse)
     - [SignInRequest](#-SignInRequest)
@@ -23,16 +22,6 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## auth_service.proto
-
-
-
-<a name="-Empty"></a>
-
-### Empty
-
-
-
-
 
 
 
@@ -156,7 +145,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | SignIn | [.SignInRequest](#SignInRequest) | [.SignInResponse](#SignInResponse) | Upon succesful login user receives a refresh_token. When it expires or is revoked user has to login again. |
-| SignOut | [.SignOutRequest](#SignOutRequest) | [.Empty](#Empty) | SignOut revokes user&#39;s active refresh_token. |
+| SignOut | [.SignOutRequest](#SignOutRequest) | [.google.protobuf.Empty](#google-protobuf-Empty) | SignOut revokes user&#39;s active refresh_token. |
 | GetAccessToken | [.GetAccessTokenRequest](#GetAccessTokenRequest) | [.GetAccessTokenResponse](#GetAccessTokenResponse) |  |
 | TranslateAccessToken | [.TranslateAccessTokenRequest](#TranslateAccessTokenRequest) | [.TranslateAccessTokenResponse](#TranslateAccessTokenResponse) |  |
 
