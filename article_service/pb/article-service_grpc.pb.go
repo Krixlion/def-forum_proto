@@ -4,7 +4,7 @@
 // - protoc             v3.6.1
 // source: article-service.proto
 
-package pb
+package article_service_pb
 
 import (
 	context "context"
