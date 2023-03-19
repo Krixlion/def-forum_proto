@@ -2,11 +2,12 @@ syntax = "proto3";
 option go_package="./pb";
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
 
 service ArticleService {
     rpc Create(CreateArticleRequest) returns (CreateArticleResponse) {}
-    rpc Update(UpdateArticleRequest) returns (UpdateArticleResponse) {}
-    rpc Delete(DeleteArticleRequest) returns (DeleteArticleResponse) {}
+    rpc Update(UpdateArticleRequest) returns (google.protobuf.Empty) {}
+    rpc Delete(DeleteArticleRequest) returns (google.protobuf.Empty) {}
     rpc Get(GetArticleRequest) returns (GetArticleResponse) {}
     rpc GetStream(GetArticlesRequest) returns (stream Article) {}
 } 
@@ -32,13 +33,9 @@ message UpdateArticleRequest {
     Article article = 1;
 }
 
-message UpdateArticleResponse {}
-
 message DeleteArticleRequest {
     string id = 1;
 }
-
-message DeleteArticleResponse {}
 
 message GetArticleRequest {
     string id = 1;

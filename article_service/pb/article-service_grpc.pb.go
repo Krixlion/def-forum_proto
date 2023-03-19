@@ -8,6 +8,7 @@ package pb
 
 import (
 	context "context"
+	empty "github.com/golang/protobuf/ptypes/empty"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -23,8 +24,8 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ArticleServiceClient interface {
 	Create(ctx context.Context, in *CreateArticleRequest, opts ...grpc.CallOption) (*CreateArticleResponse, error)
-	Update(ctx context.Context, in *UpdateArticleRequest, opts ...grpc.CallOption) (*UpdateArticleResponse, error)
-	Delete(ctx context.Context, in *DeleteArticleRequest, opts ...grpc.CallOption) (*DeleteArticleResponse, error)
+	Update(ctx context.Context, in *UpdateArticleRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Delete(ctx context.Context, in *DeleteArticleRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	Get(ctx context.Context, in *GetArticleRequest, opts ...grpc.CallOption) (*GetArticleResponse, error)
 	GetStream(ctx context.Context, in *GetArticlesRequest, opts ...grpc.CallOption) (ArticleService_GetStreamClient, error)
 }
@@ -46,8 +47,8 @@ func (c *articleServiceClient) Create(ctx context.Context, in *CreateArticleRequ
 	return out, nil
 }
 
-func (c *articleServiceClient) Update(ctx context.Context, in *UpdateArticleRequest, opts ...grpc.CallOption) (*UpdateArticleResponse, error) {
-	out := new(UpdateArticleResponse)
+func (c *articleServiceClient) Update(ctx context.Context, in *UpdateArticleRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ArticleService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -55,8 +56,8 @@ func (c *articleServiceClient) Update(ctx context.Context, in *UpdateArticleRequ
 	return out, nil
 }
 
-func (c *articleServiceClient) Delete(ctx context.Context, in *DeleteArticleRequest, opts ...grpc.CallOption) (*DeleteArticleResponse, error) {
-	out := new(DeleteArticleResponse)
+func (c *articleServiceClient) Delete(ctx context.Context, in *DeleteArticleRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ArticleService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -110,8 +111,8 @@ func (x *articleServiceGetStreamClient) Recv() (*Article, error) {
 // for forward compatibility
 type ArticleServiceServer interface {
 	Create(context.Context, *CreateArticleRequest) (*CreateArticleResponse, error)
-	Update(context.Context, *UpdateArticleRequest) (*UpdateArticleResponse, error)
-	Delete(context.Context, *DeleteArticleRequest) (*DeleteArticleResponse, error)
+	Update(context.Context, *UpdateArticleRequest) (*empty.Empty, error)
+	Delete(context.Context, *DeleteArticleRequest) (*empty.Empty, error)
 	Get(context.Context, *GetArticleRequest) (*GetArticleResponse, error)
 	GetStream(*GetArticlesRequest, ArticleService_GetStreamServer) error
 	mustEmbedUnimplementedArticleServiceServer()
@@ -124,10 +125,10 @@ type UnimplementedArticleServiceServer struct {
 func (UnimplementedArticleServiceServer) Create(context.Context, *CreateArticleRequest) (*CreateArticleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (UnimplementedArticleServiceServer) Update(context.Context, *UpdateArticleRequest) (*UpdateArticleResponse, error) {
+func (UnimplementedArticleServiceServer) Update(context.Context, *UpdateArticleRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (UnimplementedArticleServiceServer) Delete(context.Context, *DeleteArticleRequest) (*DeleteArticleResponse, error) {
+func (UnimplementedArticleServiceServer) Delete(context.Context, *DeleteArticleRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (UnimplementedArticleServiceServer) Get(context.Context, *GetArticleRequest) (*GetArticleResponse, error) {

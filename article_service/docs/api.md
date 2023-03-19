@@ -8,12 +8,10 @@
     - [CreateArticleRequest](#-CreateArticleRequest)
     - [CreateArticleResponse](#-CreateArticleResponse)
     - [DeleteArticleRequest](#-DeleteArticleRequest)
-    - [DeleteArticleResponse](#-DeleteArticleResponse)
     - [GetArticleRequest](#-GetArticleRequest)
     - [GetArticleResponse](#-GetArticleResponse)
     - [GetArticlesRequest](#-GetArticlesRequest)
     - [UpdateArticleRequest](#-UpdateArticleRequest)
-    - [UpdateArticleResponse](#-UpdateArticleResponse)
   
     - [ArticleService](#-ArticleService)
   
@@ -93,16 +91,6 @@
 
 
 
-<a name="-DeleteArticleResponse"></a>
-
-### DeleteArticleResponse
-
-
-
-
-
-
-
 <a name="-GetArticleRequest"></a>
 
 ### GetArticleRequest
@@ -163,16 +151,6 @@
 
 
 
-
-<a name="-UpdateArticleResponse"></a>
-
-### UpdateArticleResponse
-
-
-
-
-
-
  
 
  
@@ -188,8 +166,8 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Create | [.CreateArticleRequest](#CreateArticleRequest) | [.CreateArticleResponse](#CreateArticleResponse) |  |
-| Update | [.UpdateArticleRequest](#UpdateArticleRequest) | [.UpdateArticleResponse](#UpdateArticleResponse) |  |
-| Delete | [.DeleteArticleRequest](#DeleteArticleRequest) | [.DeleteArticleResponse](#DeleteArticleResponse) |  |
+| Update | [.UpdateArticleRequest](#UpdateArticleRequest) | [.google.protobuf.Empty](#google-protobuf-Empty) |  |
+| Delete | [.DeleteArticleRequest](#DeleteArticleRequest) | [.google.protobuf.Empty](#google-protobuf-Empty) |  |
 | Get | [.GetArticleRequest](#GetArticleRequest) | [.GetArticleResponse](#GetArticleResponse) |  |
 | GetStream | [.GetArticlesRequest](#GetArticlesRequest) | [.Article](#Article) stream |  |
 
