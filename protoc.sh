@@ -5,7 +5,7 @@ ROOT_DIR="$(realpath "${ROOT_DIR}")"
 for SERVICE_DIR in $(ls -d */); do
     SERVICE_DIR=${SERVICE_DIR%'/'}
     
-    PB_PATH="$(mkdir -p ${ROOT_DIR}/${SERVICE_DIR}/pb ${ROOT_DIR}/${SERVICE_DIR}/docs && cd $ROOT_DIR/${SERVICE_DIR}/pb && pwd)"
+    PB_PATH="$(mkdir -p ${ROOT_DIR}/${SERVICE_DIR}/${SERVICE_DIR}_pb ${ROOT_DIR}/${SERVICE_DIR}/docs && cd $ROOT_DIR/${SERVICE_DIR}/${SERVICE_DIR}_pb && pwd)"
     PROTO_PATH="$(ls ${SERVICE_DIR} | grep .proto)"
 
     protoc --go_out=paths=source_relative:$PB_PATH \
